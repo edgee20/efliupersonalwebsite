@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="UnitConverter.css">
+  <div id="snow"></div>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Efliu</a>
+    <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="UnitConverter.html" title="This takes you to the Unit Converter">Unit Converter</a></li>
+        <li><a href="IncomeTaxCalculator.html" title="This takes you to the Income Tax Calculator">Income Tax Calculator</a></li>
+        <li><a href="NthFactorialSumAverage.html" title="This takes you to the Nth Factorial Calculator">Nth Factorial Calculator</a></li>
+        <li><a href="SimplePayroll.html" title="This takes you to the Simple Payroll Calculator">Simple Payroll Calculator</a></li>
+    </ul>
+</nav>
+  <h2>Unit Converter</h2>
+
+  <label for="temperature">Enter temperature:</label>
+  <input type="text" id="temperature" placeholder="Enter temperature">
+
+  <button onclick="convertTemperature()">Convert F to C</button>
+  <button onclick="convertToFahrenheit()">Convert C to F</button>
+
+  <br><br>
+
+  <label for="length">Enter length:</label>
+  <input type="text" id="length" placeholder="Enter length">
+
+  <button onclick="convertLength()">Convert M to Ft</button>
+  <button onclick="convertToMeters()">Convert Ft to M</button>
+
+  <div id="result"></div>
+  <br>
+  <a href="index.html" id="btn" title="This takes you back to homepage">Home</a>
+
+  <div id="snow"></div>
+  <footer>
+    <p>&copy; 2023 EFLIU. All Rights Reserved.</p>
+</footer>
+<style>
+	#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+</style>
+  <script src="UnitConverter.js"></script>
+
+</body>
+</html>

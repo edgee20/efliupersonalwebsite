@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Operations</title>
+  <link rel="stylesheet" href="NthFactorialSumAverage.css">
+
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="logo">Efliu</a>
+    <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="UnitConverter.html" title="This takes you to the Unit Converter">Unit Converter</a></li>
+        <li><a href="IncomeTaxCalculator.html" title="This takes you to the Income Tax Calculator">Income Tax Calculator</a></li>
+        <li><a href="NthFactorialSumAverage.html" title="This takes you to the Nth Factorial Calculator">Nth Factorial Calculator</a></li>
+        <li><a href="SimplePayroll.html" title="This takes you to the Simple Payroll Calculator">Simple Payroll Calculator</a></li>
+    </ul>
+</nav>
+  <h2>Number Operations</h2>
+
+  <label for="number">Enter a number (n):</label>
+  <input type="number" id="number" placeholder="Enter a number">
+
+  <button onclick="calculateOperations()">Calculate</button>
+  <br>
+  <div id="results"></div>
+  <br><br>
+  <a href="index.html" id="btn" title="This takes you back to homepage">Home</a>
+  <footer>
+    <p>&copy; 2023 EFLIU. All Rights Reserved.</p>
+</footer>
+  <div id="snow"></div>
+<style>
+	#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
+</style>
+  <script src="NthFactorialSumAverage.js"></script>
+
+</body>
+</html>

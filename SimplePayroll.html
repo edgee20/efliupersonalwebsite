@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll System</title>
+    <link rel="stylesheet" href="SimplePayroll.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Efliu</a>
+        <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="UnitConverter.html" title="This takes you to the Unit Converter">Unit Converter</a></li>
+            <li><a href="IncomeTaxCalculator.html" title="This takes you to the Income Tax Calculator">Income Tax Calculator</a></li>
+            <li><a href="NthFactorialSumAverage.html" title="This takes you to the Nth Factorial Calculator">Nth Factorial Calculator</a></li>
+            <li><a href="SimplePayroll.html" title="This takes you to the Simple Payroll Calculator">Simple Payroll Calculator</a></li>
+        </ul>
+    </nav>
+    <h2>Payroll System</h2>
+
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" placeholder="Enter a name">
+
+    <label for="daysWorked">Days Worked:</label>
+    <input type="number" id="daysWorked" placeholder="Enter a number">
+
+    <label for="dailyRate">Daily Rate:</label>
+    <input type="number" id="dailyRate" placeholder="Enter a number">
+
+    <label for="deductionAmount">Deduction Amount:</label>
+    <input type="number" id="deductionAmount" placeholder="Enter a number">
+
+    <button onclick="addEmployee()">Add Employee</button>
+
+    <label for="deleteLine">Enter Line Number to Delete:</label>
+    <input type="number" id="deleteLine" placeholder="Enter a number">
+    <button id="btndelete">Delete Employee</button>
+    <button id="btnclear">Clear Payroll</button>
+    <h3>Payroll List</h3>
+    <table id="payrollTable">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Employee Name</th>
+                <th>Days Worked</th>
+                <th>Daily Rate</th>
+                <th>Gross Pay</th>
+                <th>Deduction Amount</th>
+                <th>Net Pay</th>
+            </tr>
+        </thead>
+        <tbody id="payrollBody"></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2"></td>
+                <td>Total:</td>
+                <td id="totalDailyRate"></td>
+                <td id="totalGrossPay"></td>
+                <td id="totalDeduction"></td>
+                <td></td>
+
+            </tr>
+        </tfoot>
+    </table>
+    <br><br>
+    <a href="index.html" id="btn" title="This takes you back to homepage">Home</a>
+    <dialog id="dlgConfirmCancel">
+        <form method="dialog">
+           <h4 id="dlgmsg"></h4>   
+           <button id="btnConfirm" value="confirm" >Confirm</button>
+           <button id="btnCancel" value="cancel" >Cancel</button>
+           
+        </form>
+    </dialog>
+    <footer>
+        <p>&copy; 2023 EFLIU. All Rights Reserved.</p>
+    </footer>
+    <div id="snow"></div>
+    <style>
+        #snow {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        pointer-events: none;
+        z-index: 1000;
+    }
+    </style>
+
+    <script>
+        (() => {
+          const dlgConfirmCancel = document.getElementById("dlgConfirmCancel");
+          dlgConfirmCancel.returnValue = "confirm";
+      
+          document.getElementById("btnclear").addEventListener("click", () => {
+            document.getElementById("dlgmsg").innerHTML = "Clear the list?";
+            dlgConfirmCancel.showModal();
+          });
+      
+          document.getElementById("btndelete").addEventListener("click", () => {
+            document.getElementById("dlgmsg").innerHTML = "Delete employee?";
+            dlgConfirmCancel.showModal();
+          });
+      
+          // Form close button closes the dialog box
+          const btnConfirm = document.getElementById("btnConfirm");
+      
+          btnConfirm.addEventListener("click", () => {
+            dlgConfirmCancel.returnValue = "confirm";
+            dlgConfirmCancel.close("confirm");
+      
+            if (dlgConfirmCancel.returnValue === "confirm") {
+              // Check if the dialog was triggered from "Delete Employee" button
+              if (dlgConfirmCancel.returnValue === "confirm" && dlgConfirmCancel.open) {
+                deleteEmployee(); // Call the deleteEmployee function
+              } else {
+                clearPayroll(); // Call the clearPayroll function
+              }
+            }
+          });
+      
+          const btnCancel = document.getElementById("btnCancel");
+          // Form close button closes the dialog box
+          btnCancel.addEventListener("click", () => {
+            dlgConfirmCancel.returnValue = "cancel";
+            dlgConfirmCancel.close("cancel");
+          });
+        })();
+      </script>
+      <script src="SimplePayroll.js"></script>
+</body>
+</html>
