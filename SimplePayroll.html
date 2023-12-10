@@ -88,47 +88,55 @@
         z-index: 1000;
     }
     </style>
-
     <script>
-        (() => {
+      (() => {
           const dlgConfirmCancel = document.getElementById("dlgConfirmCancel");
           dlgConfirmCancel.returnValue = "confirm";
-      
+
           document.getElementById("btnclear").addEventListener("click", () => {
-            document.getElementById("dlgmsg").innerHTML = "Clear the list?";
-            dlgConfirmCancel.showModal();
+              document.getElementById("dlgmsg").innerHTML = "Clear the list?";
+              dlgConfirmCancel.showModal();
           });
-      
+
           document.getElementById("btndelete").addEventListener("click", () => {
-            document.getElementById("dlgmsg").innerHTML = "Delete employee?";
-            dlgConfirmCancel.showModal();
+              document.getElementById("dlgmsg").innerHTML = "Delete employee?";
+              dlgConfirmCancel.showModal();
           });
-      
+
           // Form close button closes the dialog box
           const btnConfirm = document.getElementById("btnConfirm");
-      
+
           btnConfirm.addEventListener("click", () => {
-            dlgConfirmCancel.returnValue = "confirm";
-            dlgConfirmCancel.close("confirm");
-      
-            if (dlgConfirmCancel.returnValue === "confirm") {
-              // Check if the dialog was triggered from "Delete Employee" button
-              if (dlgConfirmCancel.returnValue === "confirm" && dlgConfirmCancel.open) {
-                deleteEmployee(); // Call the deleteEmployee function
-              } else {
-                clearPayroll(); // Call the clearPayroll function
+              dlgConfirmCancel.close(dlgConfirmCancel.returnValue);
+
+              if (dlgConfirmCancel.returnValue === "confirm") {
+                  if (document.getElementById("btndelete").clicked === "true") {
+                      deleteEmployee();
+                  } else {
+                      clearPayroll();
+                  }
               }
-            }
           });
-      
+
           const btnCancel = document.getElementById("btnCancel");
           // Form close button closes the dialog box
           btnCancel.addEventListener("click", () => {
-            dlgConfirmCancel.returnValue = "cancel";
-            dlgConfirmCancel.close("cancel");
+              dlgConfirmCancel.close("cancel");
           });
-        })();
-      </script>
-      <script src="SimplePayroll.js"></script>
+
+          // Set a custom attribute to the delete button when it's clicked
+          document.getElementById("btndelete").addEventListener("click", () => {
+              document.getElementById("btndelete").clicked = "true";
+          });
+
+          // Reset the custom attribute when the dialog is closed
+          dlgConfirmCancel.addEventListener("close", () => {
+              document.getElementById("btndelete").clicked = "false";
+          });
+      })();
+    </script>
+
+  
+    <script src="SimplePayroll.js"></script>
 </body>
 </html>
